@@ -8,6 +8,11 @@ module p1( input Init, input CLK, output IsEnd, output reg [31:0] sum_ );
 
    wire [13:0] 	c5 = cnt_ * 5;
    wire [13:0] 	c3 = cnt_ * 3;
+   initial begin
+	  stage_ <= 0;
+	  sum_ <= 0;
+	  cnt_ <= 0;
+   end
    
    always @(posedge CLK) begin
 	  flags_[c5] <= (Init | stage_ == 0) ? 0 : ( c5 <= Upto & stage_ == 1 ) ? 1 : flags_[c5];

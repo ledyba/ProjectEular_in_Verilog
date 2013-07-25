@@ -34,7 +34,8 @@ module test;
 	  $display("*** Simulation Started. ***");
 	  sys_reset;
 	  $display("*** Simulation Initialized. ***");
-	  repeat (4000) @(posedge clk);
+	  while (~isEnd)
+		@(posedge clk);
 	  $display("*** Simulation Complete! ***");
 	  $dumpall;
 	  $finish;
@@ -43,10 +44,8 @@ module test;
    task sys_reset;
 	  begin
 		 #1 reset = 1;
-		 clk = 0;
-		 repeat(3) @(posedge clk);
-		 reset = 0;
 		 @(posedge clk);
+		 reset = 0;
 	  end
    endtask // sys_reset
    
