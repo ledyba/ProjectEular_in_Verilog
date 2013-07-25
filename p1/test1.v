@@ -37,6 +37,7 @@ module test;
 	  while (~isEnd)
 		@(posedge clk);
 	  $display("*** Simulation Complete! ***");
+	  $display("RESULT: %d", sum);
 	  $dumpall;
 	  $finish;
    end
